@@ -3,24 +3,30 @@ left to right direction
 skinparam packageStyle rectangle
 
 actor "Pelanggan" as p
+actor "Kasir" as k
 rectangle "Smart laundry" {
+
   usecase "login" as UC4
   usecase "Pendaftaran Anggota baru" as UC1
   usecase "menambahkan orderan" as UC2
   usecase "mengedit orderan" as UC3
   usecase "melihat status orderan" as UC5
-  
+  usecase "Tambah transaksi" as UC6
+
   UC1 ..> UC4 : include
   UC2 ..> UC4 : include
   UC3 ..> UC4 : include
   UC5 ..> UC4 : include
+  
+  UC6 .> UC4 : include
+
+  UC6 <-- k
+  
+  p --> UC1
+  p --> UC2
+  p --> UC3
+  p --> UC5
 
 }
-p --> UC1
-p --> UC2
-p --> UC3
-p --> UC5
-
-
 
 @enduml
